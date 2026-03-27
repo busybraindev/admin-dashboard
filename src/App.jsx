@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from "react";
+import Nav from "./components/navbar/Nav";
+import Sidebar from "./components/sidebar/Sidebar";
+import { Routes, Route } from "react-router-dom";
+import Add from "./pages/Add/Add";
+import List from "./pages/Lists/List";
+import Ord from "./pages/orders/Ord";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+const App = () => {
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tokenFromUrl = params.get("token");
 
-function App() {
-  const [count, setCount] = useState(0)
+    // ✅ If coming from user app, save token
+    if (tokenFromUrl) {
+      localStorage.setItem("token", tokenFromUrl);
+      window.history.replaceState({}, document.title, "/");
+    }
 
+    const token = localStorage.getItem("token");
+
+    // ❌ No token → go back
+    if (!token) {
+      window.location.href = "http://localhost:5173";
+      return;
+    }
+
+    // ✅ Verify from backend
+    axios
+      .get("http://localhost:4000/api/user/verify", {
+        headers: { token },
+      })
+      .then((res) => {
+        console.log(res);
+
+        if (res.data.role !== "admin") {
+          window.location.href = "http://localhost:5173";
+        }
+      })
+      .catch(() => {
+        window.location.href = "http://localhost:5173";
+      });
+  }, []);
+  const url = "http://localhost:4000";
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <ToastContainer></ToastContainer>
+      <Nav></Nav>
+      <hr />
+      <div className="app">
+        <Sidebar></Sidebar>
+        <Routes>
+          <Route path="/add" element={<Add url={url}></Add>}></Route>
+          <Route path="/list" element={<List url={url}></List>}></Route>
+          <Route path="/od" element={<Ord url={url}></Ord>}></Route>
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;

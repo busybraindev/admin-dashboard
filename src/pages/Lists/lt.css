@@ -1,0 +1,26 @@
+.ltbft{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+    font-size: 13px;
+}
+.tt{
+    background-color: #f9f9f9;
+}
+.ltbft img{
+    width: 50px;
+}
+.cu{
+    cursor: pointer;
+}
+@media (max-width:600px){
+    .ltbft{
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    .tt{
+        display: none;
+    }
+}

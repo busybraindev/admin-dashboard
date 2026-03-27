@@ -1,0 +1,36 @@
+.add{
+    width: 70%;
+    margin-left: max(5vw,25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 16px;
+}
+form{
+    gap: 20px;
+}
+.add-img-up img{
+ width: 120px;
+}
+.apn,.apd{
+    width: max(40%,280px);
+
+}
+.apn input, .apd textarea{
+    padding: 10px;
+}
+.acp{
+    display: flex;
+    gap: 30px;
+}
+.acp select, .acp input{
+    max-width: 120px;
+    padding: 10px;
+}
+.ab{
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
