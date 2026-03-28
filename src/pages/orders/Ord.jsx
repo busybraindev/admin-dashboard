@@ -6,6 +6,21 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { assets } from "../../assets/assets";
 const Ord = ({ url }) => {
+  const delOrder = async (orderId) => {
+    try {
+      // Call backend to delete order
+      await axios.post(
+        url + "/api/order/dt", // make sure your backend route exists
+        { orderId },
+      );
+
+      // Remove it from state locally
+      sod((prev) => prev.filter((order) => order._id !== orderId));
+      console.log("Order deleted:", orderId);
+    } catch (err) {
+      console.error("Failed to delete order:", err);
+    }
+  };
   const [od, sod] = useState([]);
   const fd = async () => {
     const rs = await axios.get(url + "/api/order/list");
@@ -78,6 +93,7 @@ const Ord = ({ url }) => {
                 <option value="Out for delivery">Out for delivery</option>
                 <option value="Delivered">Delivered</option>
               </select>
+              <button onClick={() => delOrder(sg._id)}>Delete Order</button>
             </div>
           );
         })}

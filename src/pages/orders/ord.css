@@ -1,6 +1,6 @@
 .ot{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
     align-items: start;
     gap: 30px;
     border: 1px solid tomato;
@@ -19,7 +19,7 @@
 .ita{
     margin-bottom: 10px;
 }
-.ot select{
+.ot select, button{
     background-color: #ffe8e4;
     border: 1px solid tomato;
     width: 10vw,120px;
