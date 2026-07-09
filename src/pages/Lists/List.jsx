@@ -41,7 +41,7 @@ const List = ({ url }) => {
         {lt.map((item, i) => {
           return (
             <div key={i} className="ltbft">
-              <img src={`${url}/images/` + item.image} alt="" />
+              <img src={item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
