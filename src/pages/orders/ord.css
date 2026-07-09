@@ -1,6 +1,6 @@
 .ot{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr ;
     align-items: start;
     gap: 30px;
     border: 1px solid tomato;
@@ -30,7 +30,7 @@
 @media (max-width:1000px){
     .ot{
         font-size: 12px;
-        grid-template-columns: 0.5fr 2fr 1fr;
+        grid-template-columns: 0.5fr 2fr ;
         padding: 15px 8px;
     }
     .od select{
