@@ -23,27 +23,27 @@ const App = () => {
 
     // ❌ No token → go back
     if (!token) {
-      window.location.href = "http://localhost:5173";
+      window.location.href = "https://home-page-drab-three.vercel.app";
       return;
     }
 
     // ✅ Verify from backend
     axios
-      .get("http://localhost:4000/api/user/verify", {
+      .get("https://foodapp-backend-puce.vercel.app/api/user/verify", {
         headers: { token },
       })
       .then((res) => {
         console.log(res);
 
         if (res.data.role !== "admin") {
-          window.location.href = "http://localhost:5173";
+          window.location.href = "https://home-page-drab-three.vercel.app";
         }
       })
       .catch(() => {
-        window.location.href = "http://localhost:5173";
+        window.location.href = "https://home-page-drab-three.vercel.app";
       });
   }, []);
-  const url = "http://localhost:4000";
+  const url = "https://foodapp-backend-puce.vercel.app";
   return (
     <div>
       <ToastContainer></ToastContainer>
