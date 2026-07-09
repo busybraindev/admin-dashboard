@@ -34,3 +34,19 @@ form{
     color: white;
     cursor: pointer;
 }
+@media (max-width:600px){
+    .acp{
+        display: flex;
+        flex-direction: column;
+    }
+    .ab{
+        margin-top: 20px;
+    }
+    .acp select, .acp input{
+        border: 1px solid black;
+    }
+    .apd textarea{
+        width: 60%;
+        border: 1px solid black;
+    }
+}

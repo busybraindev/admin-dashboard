@@ -18,7 +18,9 @@
 }
 @media (max-width:600px){
     .ltbft{
-        grid-template-columns: 1fr 3fr 1fr;
+        display: flex;
+        gap: 12px;
+        
     }
     .tt{
         display: none;
